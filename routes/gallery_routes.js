@@ -25,44 +25,57 @@ router.post('/users', function (req, res) {
     });
 });
 
-router.get('/', function (req, res){
-  Photo.findAll()
-    .then(function(photos){
-      res.render('photos/index', {
-        "Photos" : photos
+router.route('/')
+  .get(function (req, res){
+    Photo.findAll()
+      .then(function(photos){
+        res.render('photos/index', {
+          "Photos" : photos
+        });
       });
+  })
+  .post(function (req, res) {
+    User.find({
+      where : {
+        username : req.body.author
+      }
+    })
+    .then(function(data){
+      if(data.dataValues.id !== undefined){
+        Photo.create({ author: req.body.author,
+          link : req.body.link,
+          description : req.body.description,
+          UserId : data.dataValues.id })
+          .then(function (gallery) {
+            res.redirect('/gallery');
+          });
+      } else {
+        throw new Error('Invalid author');
+      }
+    })
+    .catch(function(err){
+      res.send( {'success' : false});
     });
 });
 
-router.post('/', function (req, res) {
-  User.find({
+router.get('/new', function (req, res){
+  res.render('photos/new', {
+    "Photos" : req.body
+  });
+});
+
+router.get('/:id', function (req, res){
+  Photo.find({
     where : {
-      username : req.body.author
+      id : req.params.id
     }
   })
   .then(function(data){
-    console.log(data.dataValues.id);
-    if(data.dataValues.id !== undefined){
-      Photo.create({ author: req.body.author,
-        link : req.body.link,
-        description : req.body.description,
-        UserId : data.dataValues.id })
-        .then(function (gallery) {
-          res.redirect('/gallery');
-        });
-    } else {
-      throw new Error('Invalid author');
-    }
-  })
-  .catch(function(err){
-    res.send( {'success' : false});
+    res.render( 'photos/show', {
+      "photo" : data.dataValues
+    });
   });
-
-  // console.log(userId);
-
 });
-
-
 
 
 

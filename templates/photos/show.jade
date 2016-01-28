@@ -1,0 +1,9 @@
+extends ./../layout
+
+block content
+  div
+    img(src="#{photo.link}")
+    ul
+      li author : #{photo.author}
+      li link : #{photo.link}
+      li description : #{photo.description}
