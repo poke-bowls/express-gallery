@@ -21,7 +21,7 @@ router.get('/user', function (req, res){
 router.post('/users', function (req, res) {
   User.create({ username: req.body.username })
     .then(function (user) {
-      res.redirect('/');
+      res.redirect('/user');
     });
 });
 
@@ -56,6 +56,14 @@ router.route('/')
     .catch(function(err){
       res.send( {'success' : false});
     });
+})
+.put(function (req, res){
+  Photo.findAll()
+    .then(function(photos){
+      res.render('photos/index', {
+        "Photos" : photos
+      });
+    });
 });
 
 router.get('/new', function (req, res){
@@ -64,7 +72,8 @@ router.get('/new', function (req, res){
   });
 });
 
-router.get('/:id', function (req, res){
+router.route('/:id')
+.get(function (req, res){
   Photo.find({
     where : {
       id : req.params.id
@@ -74,6 +83,48 @@ router.get('/:id', function (req, res){
     res.render( 'photos/show', {
       "photo" : data.dataValues
     });
+  })
+  .catch(function(err){
+    res.send({'success' : false});
+  });
+})
+.put(function (req, res){
+  Photo.find({
+    where : {
+      id : req.params.id
+    }
+  })
+  .then(function(data){
+    // if(data.dataValues.id !== undefined){
+      data.update({
+        link : req.body.link,
+        description : req.body.description });
+      res.redirect('/gallery');
+        // .then(function () {
+        //   res.redirect('/gallery');
+        // });
+    // } else {
+    //   throw new Error('Invalid author');
+    // }
+  })
+  .catch(function(err){
+    res.send( {'success' : false});
+  });
+});
+
+router.get('/:id/edit', function (req, res){
+  Photo.find({
+    where : {
+      id : req.params.id
+    }
+  })
+  .then(function(data){
+    res.render( 'photos/edit', {
+      "photo" : data.dataValues
+    });
+  })
+  .catch(function(err){
+    res.send({'success' : false});
   });
 });
 
