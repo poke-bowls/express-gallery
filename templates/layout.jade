@@ -5,9 +5,14 @@ html(lang="en")
     title
   body
     div#navbar
-      div#navlogo
-      div#login.user
-      div#register.user
+      div#register.user register
+      div#login.user login
+    div#loginpopup
+      form(method="POST" action="#" enctype="application/x-www-form-urlencoded")#form1
+      input(type="text" name="username" value="username")
+      input(type="text" name="password" value="password")
+      button(type="submit" form="form1" value="SUBMIT") login
+    div#navlogo Og
     div#main
       block content
     div#footer

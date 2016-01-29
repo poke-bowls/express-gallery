@@ -3,10 +3,8 @@ extends ./../layout
 block content
   div
     img(src="#{photo.link}")
-    ul
-      li author : #{photo.author}
-      li link : #{photo.link}
-      li description : #{photo.description}
+    p author : #{photo.author}
+    p description : #{photo.description}
 
     form(method="POST" action="/gallery/#{photo.id}" enctype="application/x-www-form-urlencoded")#form1
       input(type="hidden" name="_method" value="DELETE")
