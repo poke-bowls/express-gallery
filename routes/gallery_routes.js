@@ -21,7 +21,7 @@ router.get('/user', function (req, res){
 router.post('/users', function (req, res) {
   User.create({ username: req.body.username })
     .then(function (user) {
-      res.redirect('/user');
+      res.redirect('/gallery/user');
     });
 });
 
