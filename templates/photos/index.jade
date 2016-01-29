@@ -1,13 +1,14 @@
 extends ./../layout
 
 block content
-  each photo in Photos
-    div#homebanner
-      div#welcomebanner
-    div#content
+  div#homebanner
+    div#welcomebanner
+
+  div#content
+    each photo in Photos
       div.content-block
         img(src="#{photo.link}")
-        ul
-          li author : #{photo.author}
-          li link : #{photo.link}
-          li description : #{photo.description}
+        p
+          p author : #{photo.author}
+          p link : #{photo.link}
+          p description : #{photo.description}

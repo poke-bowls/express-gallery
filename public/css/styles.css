@@ -1,9 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Qwigley);
+@import url(https://fonts.googleapis.com/css?family=Dosis);
+* {
+  box-sizing: border-box;
+  transition: all 0.5s ease; }
+
 body {
   margin: 0px;
   padding: 0px;
   background-color: pink;
   display: flex;
   flex-flow: row wrap; }
+  @media only screen and (max-width: 1200px) {
+    body {
+      color: brown; } }
   @media only screen and (max-width: 720px) {
     body {
       color: red; } }
@@ -16,9 +28,11 @@ body {
     background-color: #0000FF;
     position: absolute;
     top: 0;
-    left: 0; }
+    left: 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px; }
   body #main {
     height: 100%;
+    min-height: 100%;
     width: 100%;
     background-color: #FFA500;
     margin-top: 50px; }
@@ -26,7 +40,6 @@ body {
       width: 100%;
       height: 350px;
       background-color: #800080;
-      margin-bottom: 50px;
       display: flex;
       flex-flow: row wrap;
       justify-content: flex-end; }
@@ -40,9 +53,48 @@ body {
         margin-right: 50px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px; }
-    body #main li {
-      font-family: comic sans ms, impact;
-      font-weight: bold; }
+    body #main #content {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      min-height: 100%;
+      margin: 50px 0px;
+      font-family: 'Montserrat'; }
+      @media only screen and (max-width: 1200px) {
+        body #main #content {
+          width: 30%;
+          height: 100%; } }
+      @media only screen and (max-width: 720px) {
+        body #main #content {
+          width: 45%;
+          height: 100%; } }
+      @media only screen and (max-width: 480px) {
+        body #main #content {
+          width: 90%;
+          height: 100%; } }
+      body #main #content .content-block {
+        flex: 0 0 300px;
+        height: 500px;
+        width: 300px;
+        background-color: white;
+        padding: 10px;
+        margin: 0px 10px;
+        box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px; }
+        body #main #content .content-block img {
+          max-width: 100%;
+          width: 100%; }
+        @media only screen and (max-width: 1200px) {
+          body #main #content .content-block {
+            width: 100%;
+            color: brown; } }
+        @media only screen and (max-width: 720px) {
+          body #main #content .content-block {
+            width: 50%;
+            color: red; } }
+        @media only screen and (max-width: 480px) {
+          body #main #content .content-block {
+            width: 100%;
+            color: blue; } }
   body #footer {
     min-height: 50px;
     width: 100%;
