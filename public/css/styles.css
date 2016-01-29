@@ -1,0 +1,52 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: pink;
+  display: flex;
+  flex-flow: row wrap; }
+  @media only screen and (max-width: 720px) {
+    body {
+      color: red; } }
+  @media only screen and (max-width: 480px) {
+    body {
+      color: blue; } }
+  body #navbar {
+    min-height: 50px;
+    width: 100%;
+    background-color: #0000FF;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  body #main {
+    height: 100%;
+    width: 100%;
+    background-color: #FFA500;
+    margin-top: 50px; }
+    body #main #homebanner {
+      width: 100%;
+      height: 350px;
+      background-color: #800080;
+      margin-bottom: 50px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-end; }
+      body #main #homebanner #welcomebanner {
+        width: 400px;
+        height: 300px;
+        padding-right: 50px;
+        background-color: #000000;
+        opacity: 0.5;
+        align-self: flex-end;
+        margin-right: 50px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px; }
+    body #main li {
+      font-family: comic sans ms, impact;
+      font-weight: bold; }
+  body #footer {
+    min-height: 50px;
+    width: 100%;
+    background-color: #008000;
+    position: relative;
+    bottom: 0;
+    left: 0; }

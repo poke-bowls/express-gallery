@@ -95,20 +95,26 @@ router.route('/:id')
     }
   })
   .then(function(data){
-    // if(data.dataValues.id !== undefined){
       data.update({
         link : req.body.link,
         description : req.body.description });
       res.redirect('/gallery');
-        // .then(function () {
-        //   res.redirect('/gallery');
-        // });
-    // } else {
-    //   throw new Error('Invalid author');
-    // }
   })
   .catch(function(err){
     res.send( {'success' : false});
+  });
+})
+.delete(function (req, res){
+  Photo.destroy({
+    where : {
+      id : req.params.id
+    }
+  })
+  .then(function(data){
+    res.redirect('/gallery');
+    })
+  .catch(function(err){
+    res.send({"success" : false});
   });
 });
 
@@ -127,7 +133,5 @@ router.get('/:id/edit', function (req, res){
     res.send({'success' : false});
   });
 });
-
-
 
 module.exports = router;

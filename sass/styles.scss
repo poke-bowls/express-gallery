@@ -1,0 +1,79 @@
+//Variables
+$navbar : #0000FF;
+$main : #FFA500;
+$homebanner : #800080;
+$welcomebanner : #000000;
+$footer : #008000;
+
+//MEDIA QUERY RANGES
+$medium : "only screen and (max-width:720px)";
+$mobile : "only screen and (max-width:480px)";
+
+body {
+  margin : 0px;
+  padding : 0px;
+  background-color: pink;
+  display : flex;
+  flex-flow : row wrap;
+
+  @media #{$medium} {
+    color: red;
+  }
+
+  @media #{$mobile} {
+    color: blue;
+  }
+
+  #navbar {
+    min-height : 50px;
+    width : 100%;
+    background-color: $navbar;
+    position : absolute;
+    top : 0;
+    left : 0;
+  }
+
+  #main {
+    height: 100%;
+    width: 100%;
+    background-color: $main;
+    margin-top : 50px;
+
+    #homebanner {
+      width : 100%;
+      height : 350px;
+      background-color: $homebanner;
+      margin-bottom: 50px;
+      display : flex;
+      flex-flow : row wrap;
+      justify-content : flex-end;
+
+      #welcomebanner {
+      width : 400px;
+      height : 300px;
+      padding-right : 50px;
+      background-color: $welcomebanner;
+      opacity : 0.5;
+      align-self : flex-end;
+      margin-right : 50px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      }
+    }
+
+    li {
+      font-family: comic sans ms, impact;
+      font-weight: bold;
+    }
+  }
+
+  #footer {
+    min-height : 50px;
+    width : 100%;
+    background-color: $footer;
+    position : relative;
+    bottom : 0;
+    left : 0;
+  }
+
+}
