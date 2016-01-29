@@ -10,7 +10,6 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-color: pink;
   display: flex;
   flex-flow: row wrap; }
   @media only screen and (max-width: 1200px) {
@@ -25,7 +24,7 @@ body {
   body #navbar {
     min-height: 50px;
     width: 100%;
-    background-color: #0000FF;
+    background-color: #3E3E5B;
     position: absolute;
     top: 0;
     left: 0;
@@ -35,11 +34,14 @@ body {
     min-height: 100%;
     width: 100%;
     background-color: #FFA500;
+    background-image: url("./../images/upfeathers.png");
     margin-top: 50px; }
     body #main #homebanner {
       width: 100%;
       height: 350px;
-      background-color: #800080;
+      background-color: #5E5E79;
+      background-image: url("http://chromecastbg.alexmeub.com/images/1200_AF1QipN0X6n39_rePcGsmL_LgxFbthfIyDHjBeMlsmr5.jpg");
+      background-position: 50%;
       display: flex;
       flex-flow: row wrap;
       justify-content: flex-end; }
@@ -62,43 +64,67 @@ body {
       font-family: 'Montserrat'; }
       @media only screen and (max-width: 1200px) {
         body #main #content {
-          width: 30%;
-          height: 100%; } }
+          height: 100%;
+          justify-content: center;
+          margin: 50px 10px; } }
       @media only screen and (max-width: 720px) {
         body #main #content {
-          width: 45%;
-          height: 100%; } }
+          height: 100%;
+          justify-content: center;
+          margin: 50px 10px; } }
       @media only screen and (max-width: 480px) {
         body #main #content {
-          width: 90%;
           height: 100%; } }
       body #main #content .content-block {
-        flex: 0 0 300px;
-        height: 500px;
-        width: 300px;
+        flex: 0 0 22%;
         background-color: white;
         padding: 10px;
-        margin: 0px 10px;
+        margin: 10px;
         box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px; }
         body #main #content .content-block img {
           max-width: 100%;
           width: 100%; }
+          @media only screen and (max-width: 1200px) {
+            body #main #content .content-block img {
+              padding: 10px; } }
+          @media only screen and (max-width: 720px) {
+            body #main #content .content-block img {
+              padding: 10px; } }
+          @media only screen and (max-width: 480px) {
+            body #main #content .content-block img {
+              padding: 10px; } }
+        body #main #content .content-block p {
+          max-width: 100%;
+          width: 100%; }
+          @media only screen and (max-width: 1200px) {
+            body #main #content .content-block p {
+              padding: 10px;
+              color: brown; } }
+          @media only screen and (max-width: 720px) {
+            body #main #content .content-block p {
+              padding: 10px;
+              color: cyan; } }
+          @media only screen and (max-width: 480px) {
+            body #main #content .content-block p {
+              padding: 10px;
+              color: blue; } }
         @media only screen and (max-width: 1200px) {
           body #main #content .content-block {
-            width: 100%;
-            color: brown; } }
+            flex: 0 0 30%;
+            background-color: cyan; } }
         @media only screen and (max-width: 720px) {
           body #main #content .content-block {
-            width: 50%;
-            color: red; } }
+            flex: 0 0 45%;
+            background-color: brown; } }
         @media only screen and (max-width: 480px) {
           body #main #content .content-block {
-            width: 100%;
-            color: blue; } }
+            flex: 0 0 90%;
+            background-color: black; } }
   body #footer {
     min-height: 50px;
     width: 100%;
     background-color: #008000;
     position: relative;
     bottom: 0;
-    left: 0; }
+    left: 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 5px 3px 5px 5px; }
