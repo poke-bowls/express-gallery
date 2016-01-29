@@ -56,10 +56,11 @@ body {
     top: 60px;
     right: 5px;
     opacity: 0.9;
+    box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px;
     text-align: center;
-    border-radius: 5px; }
+    border-radius: 5px;
+    display: none; }
   body #navlogo {
-    margin-left: 20px;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -67,11 +68,12 @@ body {
     color: white;
     font-family: 'Qwigley';
     align: center;
+    padding-left: 5px;
     font-size: 100px;
     line-height: 100px;
-    position: absolute;
-    top: 0px;
-    left: 0px; }
+    position: fixed;
+    top: 5px;
+    left: 5px; }
   body #main {
     height: 100%;
     min-height: 100%;
@@ -94,15 +96,15 @@ body {
         body #main #homebanner {
           display: none; } }
       body #main #homebanner #welcomebanner {
-        width: 600px;
-        height: 300px;
+        width: 500px;
+        height: 200px;
         background-color: #000000;
         opacity: 0.8;
         align-self: flex-end;
         font-family: 'Qwigley';
         color: white;
         font-size: 50px;
-        line-height: 300px;
+        line-height: 200px;
         margin-right: 50px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
@@ -118,39 +120,28 @@ body {
       flex-flow: row wrap;
       justify-content: center;
       min-height: 250px;
-      margin: 25px;
-      font-family: 'Lato'; }
+      font-family: 'Lato';
+      margin: 5px; }
       @media only screen and (max-width: 1200px) {
         body #main #content {
           height: 100%;
-          justify-content: center;
-          margin: 50px 10px; } }
+          justify-content: center; } }
       @media only screen and (max-width: 720px) {
         body #main #content {
           height: 100%;
-          justify-content: center;
-          margin: 50px 10px; } }
+          justify-content: center; } }
       @media only screen and (max-width: 480px) {
         body #main #content {
           height: 100%; } }
       body #main #content .content-block {
         flex: 0 0 22%;
         background-color: white;
-        padding: 10px;
-        margin: 10px;
+        padding: 5px;
+        margin: 5px;
         box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px; }
         body #main #content .content-block img {
           max-width: 100%;
           width: 100%; }
-          @media only screen and (max-width: 1200px) {
-            body #main #content .content-block img {
-              padding: 10px; } }
-          @media only screen and (max-width: 720px) {
-            body #main #content .content-block img {
-              padding: 10px; } }
-          @media only screen and (max-width: 480px) {
-            body #main #content .content-block img {
-              padding: 10px; } }
         body #main #content .content-block p {
           max-width: 100%;
           width: 100%; }
