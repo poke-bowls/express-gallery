@@ -6,9 +6,6 @@ var router = express.Router();
 var gallery = require('./routes/gallery_routes.js');
 var methodOverride = require('method-override');
 
-var User = db.User;
-
-app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({extended:true
 }));
@@ -18,6 +15,10 @@ app.use(methodOverride(function(req,res){
  delete req.body._method;
  return method;
 }));
+
+app.use(express.static('public'));
+
+var User = db.User;
 
 app.use('/gallery', gallery);
 

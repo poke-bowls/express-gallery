@@ -27,10 +27,9 @@ body {
     body {
       color: blue; } }
   body #navbar {
-    min-height: 50px;
-    height: 50px;
+    height: 35px;
     width: 100%;
-    background-color: brown;
+    background-color: #81B1B2;
     position: absolute;
     top: 0;
     left: 0;
@@ -44,9 +43,11 @@ body {
     margin-right: 15px;
     padding: 5px;
     height: 50px;
-    line-height: 50px; }
+    line-height: 35px; }
   body .user:hover {
     color: black; }
+  body #loginpopup {
+    display: none; }
   body #loginpopup {
     height: 50px;
     width: 375px;
@@ -59,28 +60,34 @@ body {
     text-align: center;
     border-radius: 5px; }
   body #navlogo {
-    margin-left: 20px;
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: black;
-    color: white;
+    background-color: #181A1B;
+    color: #FCFBE3;
     font-family: 'Qwigley';
     align: center;
     font-size: 100px;
     line-height: 100px;
     position: absolute;
-    top: 0px;
-    left: 0px; }
+    top: 5px;
+    left: 5px;
+    padding: 5px; }
+    @media only screen and (max-width: 480px) {
+      body #navlogo {
+        width: 75px;
+        height: 75px;
+        font-size: 75px;
+        line-height: 75px;
+        padding-left: 3px; } }
   body #main {
     height: 100%;
     min-height: 100%;
-    width: 100%;
-    margin-top: 50px; }
+    width: 100%; }
     body #main #homebanner {
       width: 100%;
-      height: 370px;
-      background-color: #5E5E79;
+      height: 350px;
+      margin-bottom: 15px;
       background-image: url("http://chromecastbg.alexmeub.com/images/1200_AF1QipN0X6n39_rePcGsmL_LgxFbthfIyDHjBeMlsmr5.jpg");
       background-position: 50%;
       display: flex;
@@ -94,15 +101,15 @@ body {
         body #main #homebanner {
           display: none; } }
       body #main #homebanner #welcomebanner {
-        width: 600px;
-        height: 300px;
+        width: 400px;
+        height: 200px;
         background-color: #000000;
-        opacity: 0.8;
+        opacity: 0.5;
         align-self: flex-end;
         font-family: 'Qwigley';
-        color: white;
+        color: #FCFBE3;
         font-size: 50px;
-        line-height: 300px;
+        line-height: 200px;
         margin-right: 50px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
@@ -118,39 +125,28 @@ body {
       flex-flow: row wrap;
       justify-content: center;
       min-height: 250px;
-      margin: 25px;
       font-family: 'Lato'; }
       @media only screen and (max-width: 1200px) {
         body #main #content {
           height: 100%;
-          justify-content: center;
-          margin: 50px 10px; } }
+          justify-content: center; } }
       @media only screen and (max-width: 720px) {
         body #main #content {
           height: 100%;
-          justify-content: center;
-          margin: 50px 10px; } }
+          justify-content: center; } }
       @media only screen and (max-width: 480px) {
         body #main #content {
+          margin-top: 40px;
           height: 100%; } }
       body #main #content .content-block {
         flex: 0 0 22%;
-        background-color: white;
-        padding: 10px;
-        margin: 10px;
+        background-color: #FCFBE3;
+        padding: 5px;
+        margin: 5px;
         box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px; }
         body #main #content .content-block img {
           max-width: 100%;
           width: 100%; }
-          @media only screen and (max-width: 1200px) {
-            body #main #content .content-block img {
-              padding: 10px; } }
-          @media only screen and (max-width: 720px) {
-            body #main #content .content-block img {
-              padding: 10px; } }
-          @media only screen and (max-width: 480px) {
-            body #main #content .content-block img {
-              padding: 10px; } }
         body #main #content .content-block p {
           max-width: 100%;
           width: 100%; }
@@ -177,10 +173,55 @@ body {
   body #footer {
     min-height: 50px;
     width: 100%;
-    background-color: brown;
+    background-color: #81B1B2;
     position: relative;
-    margin-top: 25px;
+    margin-top: 15px;
     bottom: 0;
     left: 0;
     opacity: 0.9;
     box-shadow: rgba(0, 0, 0, 0.2) 5px 3px 5px 5px; }
+
+.single_content {
+  width: 100%;
+  min-height: 86vh;
+  margin-top: 50px; }
+
+.show {
+  margin: auto;
+  background-color: #181A1B;
+  width: 1015px;
+  padding: 25px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 3px 5px 5px;
+  color: #FCFBE3; }
+
+.mainshow {
+  flex: 0 0 800px;
+  margin-right: 15px; }
+  .mainshow img {
+    width: 100%; }
+  .mainshow p {
+    font-family: 'Lato'; }
+
+#sideshow {
+  flex: 0 0 1;
+  max-height: 100vh; }
+
+.sideshowcontent img {
+  width: 100%;
+  display: inline-block; }
+
+.editform {
+  width: 75px;
+  display: inline-block; }
+
+.button {
+  width: 60px;
+  height: 30px;
+  background-color: #81B1B2;
+  font-family: 'Oswald';
+  font-size: 15px;
+  border-width: 0px;
+  box-shadow: rgba(255, 255, 255, 0.2) 1px 2px 1px 1px; }

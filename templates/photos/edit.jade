@@ -1,14 +1,15 @@
 extends ./../layout
 
 block content
+  div.single_content
+    div.show
+      div.mainshow
+        img(src="#{photo.link}")
 
-  img(src="#{photo.link}")
-  form(method="POST" action="/gallery/#{photo.id}" enctype="application/x-www-form-urlencoded")#form1
-    input(type="hidden" name="_method" value="PUT")
-    p link:
-      input(type='text' name="link" value="#{photo.link}")
-    br
-    p description:
-      input(type='text' name="description" value="#{photo.description}")
-    br
-    button(type="submit" form="form1" value="Submit")#submit Submit
+        form(method="POST" action="/gallery/#{photo.id}/" enctype="application/x-www-form-urlencoded")#form3.editform
+          input(type="hidden" name="_method" value="PUT")
+          p link:
+            input(type='text' name="link" value="#{photo.link}")
+          p description:
+            input(type='text' name="description" value="#{photo.description}")
+          button(type="submit" form="form3" value="Edit")#edit.button SUBMIT

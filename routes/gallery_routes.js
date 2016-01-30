@@ -80,9 +80,22 @@ router.route('/:id')
     }
   })
   .then(function(data){
-    res.render( 'photos/show', {
-      "photo" : data.dataValues
-    });
+    Photo.findAll({
+      where : {
+        id : {
+          $ne : req.params.id
+        }
+      }
+    })
+      .then(function(photos){
+          res.render('photos/show', {
+            "otherPhotos" : photos.slice( 0, 5),
+            "photo" : data.dataValues
+          });
+      })
+      .catch(function(err){
+        console.log(err);
+      });
   })
   .catch(function(err){
     res.send({'success' : false});

@@ -7,7 +7,7 @@ block content
   div#content
     each photo in Photos
       div.content-block
-        a(href="./gallery/#{photo.id}")
+        a(href="/gallery/#{photo.id}")
           img(src="#{photo.link}")
         p By : #{photo.author}
         p #{photo.description}
