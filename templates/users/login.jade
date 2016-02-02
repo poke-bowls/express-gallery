@@ -1,0 +1,11 @@
+extends ./../layout
+
+block content
+  div#logincontent
+    div#loginmain
+      form(method="POST" action="/gallery/login" enctype="application/x-www-form-urlencoded")#form1
+      input(type="text" name="username" placeholder="username")
+
+      input(type="password" name="password" placeholder="password")
+      br
+      button(type="submit" form="form1" value="SUBMIT").button Login

@@ -7,7 +7,23 @@ var db = require('./../models');
 var User = db.User;
 var Photo = db.Photo;
 
+//authentication
+var passport = require('passport');
+var session = require('express-session');
+var LocalStrategy = require( 'passport-local').Strategy;
+var CONFIG = require('./../config/config.json');
+
 router.use(bodyParser.urlencoded({extended: true}));
+
+router.route('/login')
+  .get(function (req, res){
+    res.render('users/login');
+  })
+
+  .post(passport.authenticate('local', {
+    successRedirect : '/gallery',
+    failureRedirect : '/'
+ }));
 
 router.get('/user', function (req, res){
   User.findAll()
@@ -19,7 +35,10 @@ router.get('/user', function (req, res){
 });
 
 router.post('/users', function (req, res) {
-  User.create({ username: req.body.username })
+  User.create({
+    username: req.body.username,
+    password: req.body.password
+  })
     .then(function (user) {
       res.redirect('/gallery/user');
     });

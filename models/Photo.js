@@ -1,9 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
   var Photo = sequelize.define("Photo", {
-    author: DataTypes.STRING,
-    link: DataTypes.STRING,
+    author: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    link: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     description: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    UserId: {
+      type: DataTypes.INTEGER,
+      uniqie: true,
+      allowNull: false
+    }
   }, {
     classMethods: {
       associate: function(models) {
@@ -11,6 +21,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-
   return Photo;
 };
