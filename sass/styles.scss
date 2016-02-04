@@ -57,9 +57,22 @@ body {
     left : 0;
     box-shadow : rgba(0,0,0,.2) 3px 5px 5px;
     opacity: 0.9;
+
+      @media #{$large} {
+        width: 100%;
+      }
+
+      @media #{$medium} {
+        width: 100%;
+      }
+
+      @media #{$mobile} {
+        width: 100%;
+      }
+
   }
   .user {
-    color: white;
+    color: $neutral;
     font-family: 'Righteous';
     font-size: 20px;
     float: right;
@@ -67,12 +80,27 @@ body {
     padding: 5px;
     height: 35px;
     line-height: 30px;
+
+    a {
+    color: $neutral;
+    text-decoration: none;
+    transition: 0s ease;
+    }
+
+    a:hover {
+      color: $dark;
+      transition: 0s ease;
+    }
   }
 
   .user:hover {
-    // color: black;
-    // transition: 0.1s ease;
+    // color: $dark;
+    // transition: 0s ease;
     border-bottom: 25px solid $neutral;
+
+    a {
+      color: $dark;
+    }
   }
 
   #register {
@@ -87,6 +115,20 @@ body {
     height: 95vh;
     padding-top: 10%;
     margin-top: 50px;
+
+      @media #{$large} {
+        margin-top: 50px;
+      }
+
+      @media #{$medium} {
+        margin-top: 50px;
+      }
+
+      @media #{$mobile} {
+        width: 100%;
+        height: 90vh;
+        margin-top: 0px;
+      }
   }
 
   #loginmain {
@@ -99,6 +141,20 @@ body {
     // box-shadow : rgba(0,0,0,.2) 3px 5px 5px;
     text-align: center;
     border-radius: 5px;
+
+      @media #{$large} {
+        width: 400px;
+      }
+
+      @media #{$medium} {
+        width: 300px;
+      }
+
+      @media #{$mobile} {
+        width: 100%;
+        height: 100%;
+        margin-top: 0px;
+      }
   }
 
   #loginpopup {
@@ -166,9 +222,9 @@ body {
       justify-content : flex-end;
       box-shadow : rgba(0,0,0,.2) 3px 5px 5px;
 
-      // @media #{$large} {
-      //   justify-content: center;
-      // }
+      @media #{$large} {
+        justify-content: center;
+      }
 
       @media #{$medium} {
         justify-content: center;
@@ -358,6 +414,24 @@ body {
   margin-top: 150px;
 }
 
+#newusercontent {
+  height: 95vh;
+  padding-top: 10%;
+  margin-top: 50px;
+}
+
+#newusermain {
+  margin: auto;
+  height: 300px;
+  width: 400px;
+  background-color: $tertiary;
+  padding-top: 50px;
+  opacity: 0.9;
+  // box-shadow : rgba(0,0,0,.2) 3px 5px 5px;
+  text-align: center;
+  border-radius: 5px;
+}
+
 .button {
   -moz-box-shadow:inset 0px 1px 0px 0px #114242;
   -webkit-box-shadow:inset 0px 1px 0px 0px #114242;
@@ -395,15 +469,4 @@ body {
 .button:active {
   position:relative;
   top:1px;
-}
-
-a {
-  color: $neutral;
-  text-decoration: none;
-  transition: 0s ease;
-}
-
-a:hover {
-  color: $dark;
-  transition: 0s ease;
 }

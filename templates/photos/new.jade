@@ -2,15 +2,14 @@ extends ./../layout
 
 block content
   div#newphoto
+    p author: "#{currentUser}"
     form(method="POST" action="/gallery" enctype="application/x-www-form-urlencoded")#form5
       input(type="hidden" name="_method" value="POST")
-      p author:
-        input(type='text' name="author")
-      br
+      input(type='hidden' name="author" value="#{currentUser}")
       p link:
         input(type='text' name="link")
       br
       p description:
         input(type='text' name="description")
       br
-      button(type="submit" form="form5" value="Submit")#submit Submit
+      button(type="submit" form="form5" value="Submit")#submit.button Submit

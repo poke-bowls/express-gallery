@@ -1,0 +1,10 @@
+extends ./../layout
+
+block content
+  div#newusercontent
+    div#newusermain
+      form(method="POST" action="/gallery/user/new" enctype="application/x-www-form-urlencoded")#form1
+        input(type='text' name="username" placeholder="username")
+        input(type='text' name="password" placeholder="password")
+        br
+        button(type="submit" form="form1" value="Submit")#submit.button Register

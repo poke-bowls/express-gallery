@@ -9,12 +9,13 @@ block content
         p author : #{photo.author}
         p description : #{photo.description}
 
-        form(method="POST" action="/gallery/#{photo.id}" enctype="application/x-www-form-urlencoded")#form4.editform
-          input(type="hidden" name="_method" value="DELETE")
-          button(type="submit" form="form4" value="Delete")#delete.button DELETE
+        if currentUser == photo.author
+          form(method="POST" action="/gallery/#{photo.id}" enctype="application/x-www-form-urlencoded")#form4.editform
+            input(type="hidden" name="_method" value="DELETE")
+            button(type="submit" form="form4" value="Delete")#delete.button DELETE
 
-        form(method="GET" action="/gallery/#{photo.id}/edit" enctype="application/x-www-form-urlencoded")#form2.editform
-          button(type="submit" form="form2" value="Edit")#edit.button EDIT
+          form(method="GET" action="/gallery/#{photo.id}/edit" enctype="application/x-www-form-urlencoded")#form2.editform
+            button(type="submit" form="form2" value="Edit")#edit.button EDIT
 
       div#sideshow
         div.sideshowcontent

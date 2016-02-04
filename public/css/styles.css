@@ -35,8 +35,17 @@ body {
     left: 0;
     box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px;
     opacity: 0.9; }
+    @media only screen and (max-width: 1200px) {
+      body #navbar {
+        width: 100%; } }
+    @media only screen and (max-width: 720px) {
+      body #navbar {
+        width: 100%; } }
+    @media only screen and (max-width: 480px) {
+      body #navbar {
+        width: 100%; } }
   body .user {
-    color: white;
+    color: #FCFBE3;
     font-family: 'Righteous';
     font-size: 20px;
     float: right;
@@ -44,12 +53,32 @@ body {
     padding: 5px;
     height: 35px;
     line-height: 30px; }
+    body .user a {
+      color: #FCFBE3;
+      text-decoration: none;
+      transition: 0s ease; }
+    body .user a:hover {
+      color: #181A1B;
+      transition: 0s ease; }
   body .user:hover {
     border-bottom: 25px solid #FCFBE3; }
+    body .user:hover a {
+      color: #181A1B; }
   body #logincontent {
     height: 95vh;
     padding-top: 10%;
     margin-top: 50px; }
+    @media only screen and (max-width: 1200px) {
+      body #logincontent {
+        margin-top: 50px; } }
+    @media only screen and (max-width: 720px) {
+      body #logincontent {
+        margin-top: 50px; } }
+    @media only screen and (max-width: 480px) {
+      body #logincontent {
+        width: 100%;
+        height: 90vh;
+        margin-top: 0px; } }
   body #loginmain {
     margin: auto;
     height: 300px;
@@ -59,6 +88,17 @@ body {
     opacity: 0.9;
     text-align: center;
     border-radius: 5px; }
+    @media only screen and (max-width: 1200px) {
+      body #loginmain {
+        width: 400px; } }
+    @media only screen and (max-width: 720px) {
+      body #loginmain {
+        width: 300px; } }
+    @media only screen and (max-width: 480px) {
+      body #loginmain {
+        width: 100%;
+        height: 100%;
+        margin-top: 0px; } }
   body #loginpopup {
     height: 50px;
     width: 375px;
@@ -115,6 +155,9 @@ body {
       flex-flow: row wrap;
       justify-content: flex-end;
       box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px; }
+      @media only screen and (max-width: 1200px) {
+        body #main #homebanner {
+          justify-content: center; } }
       @media only screen and (max-width: 720px) {
         body #main #homebanner {
           justify-content: center; } }
@@ -243,6 +286,21 @@ body {
 #newphoto {
   margin-top: 150px; }
 
+#newusercontent {
+  height: 95vh;
+  padding-top: 10%;
+  margin-top: 50px; }
+
+#newusermain {
+  margin: auto;
+  height: 300px;
+  width: 400px;
+  background-color: #81B1B2;
+  padding-top: 50px;
+  opacity: 0.9;
+  text-align: center;
+  border-radius: 5px; }
+
 .button {
   -moz-box-shadow: inset 0px 1px 0px 0px #114242;
   -webkit-box-shadow: inset 0px 1px 0px 0px #114242;
@@ -280,12 +338,3 @@ body {
 .button:active {
   position: relative;
   top: 1px; }
-
-a {
-  color: #FCFBE3;
-  text-decoration: none;
-  transition: 0s ease; }
-
-a:hover {
-  color: #181A1B;
-  transition: 0s ease; }

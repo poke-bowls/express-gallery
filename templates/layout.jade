@@ -3,14 +3,22 @@ html(lang="en")
   head
     link(href="/css/styles.css", rel="stylesheet")
     title
+    script(type='text/javascript').
   body
     div#navbar
-      div#register.user
-        a(href="#")
-          span register
-      div#login.user
-        a(href="/gallery/login")
-          span login
+      if currentUser
+        div#logout.user
+          span #{currentUser}
+        div#logout.user
+          a(href="/gallery/logout")
+            span logout
+      else
+        div#register.user
+          a(href="/gallery/user/new")
+            span register
+        div#login.user
+          a(href="/gallery/login")
+            span login
     //- div#loginpopup
     //-   form(method="POST" action="/gallery/login" enctype="application/x-www-form-urlencoded")#form1
     //-   input(type="text" name="username" value="username")
