@@ -13,6 +13,9 @@ var session = require('express-session');
 var LocalStrategy = require( 'passport-local').Strategy;
 var CONFIG = require('./../config/session-config');
 
+//encryption of passwords
+var bcrypt = require('bcrypt');
+
 // //Add optional secret key to our session
 router.use(session(CONFIG.SESSION));
 
@@ -34,22 +37,29 @@ passport.deserializeUser(function (user, done){
   return done(null, user);
 });
 
-passport.use(new LocalStrategy(
-  function (username, password, done) {
-    // var isAuthenticated = authenticate(username, password);
-    // if (!isAuthenticated) {// Not authenticated
-    //   return done(null, false); //No error, but credentials dont match
-    // }
-    User.find({
+passport.use(new LocalStrategy({
+  passReqToCallback: true
+  },
+  function(req, username, password, done){
+    var user;
+    User.findOne({
       where : {
         username : username
-      }
-    })
+    }})
     .then(function(data){
-      return done(null, data.dataValues);
-    })
-    .catch(function(err){
-      console.log(err);
+      user = data;
+      if(!user){
+        return done(null, false);
+      }
+      bcrypt.compare(password, user.password, function(err, res){
+        console.log(res);
+        if(user.username === username && res === false){
+          return done(null, false);
+        }
+        if(user.username === username && res === true){
+          return done(null, user);
+        }
+      });
     });
   }
 ));
@@ -61,7 +71,6 @@ router.route('/login')
     req.logout();
     res.render('users/login');
   })
-
   .post(passport.authenticate('local', {
     successRedirect : '/',
     failureRedirect : '/gallery/login'
@@ -86,9 +95,11 @@ router.route('/user/new')
     res.render('users/register');
   })
   .post(function (req, res) {
-    User.create({
-      username: req.body.username,
-      password: req.body.password
+    bcrypt.hash(req.body.password, 10, function(err,hash){
+      if (err) return res.send(err);
+      User.create({
+        username: req.body.username,
+        password: hash
     })
       .then(function (user) {
         req.login(user, function(err){
@@ -97,8 +108,8 @@ router.route('/user/new')
           }
           res.redirect('/gallery/user');
         });
-
       });
+    });
   });
 
 router.route('/')
