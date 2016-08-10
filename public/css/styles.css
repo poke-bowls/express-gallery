@@ -14,6 +14,8 @@ p {
 body {
   margin: 0px;
   padding: 0px;
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-flow: row wrap;
   background-image: url("./../images/upfeathers.png"); }
@@ -44,6 +46,19 @@ body {
     @media only screen and (max-width: 480px) {
       body #navbar {
         width: 100%; } }
+  body .cuser {
+    color: #FCFBE3;
+    font-family: 'Righteous';
+    font-size: 20px;
+    float: right;
+    margin-right: 15px;
+    padding: 5px;
+    height: 35px;
+    line-height: 30px; }
+  body .cuser:hover {
+    border-bottom: 25px solid #FCFBE3; }
+    body .cuser:hover span {
+      color: #181A1B; }
   body .user {
     color: #FCFBE3;
     font-family: 'Righteous';
@@ -64,6 +79,9 @@ body {
     border-bottom: 25px solid #FCFBE3; }
     body .user:hover a {
       color: #181A1B; }
+  body #user-list {
+    margin-top: 60px;
+    margin-left: 100px; }
   body #logincontent {
     height: 95vh;
     padding-top: 15%; }
@@ -141,9 +159,12 @@ body {
         line-height: 75px;
         padding-left: 3px; } }
   body #main {
-    height: 100%;
     min-height: 100%;
-    width: 100%; }
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap; }
     body #main #homebanner {
       width: 100%;
       height: 350px;
@@ -211,7 +232,8 @@ body {
         box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px; }
         body #main #content .content-block img {
           max-width: 100%;
-          width: 100%; }
+          width: 100%;
+          height: 250px; }
         body #main #content .content-block p {
           max-width: 100%;
           width: 100%; }
@@ -235,14 +257,17 @@ body {
         @media only screen and (max-width: 480px) {
           body #main #content .content-block {
             flex: 0 0 90%; } }
+  body .push {
+    height: 5vh; }
   body #footer {
-    min-height: 35px;
+    align-self: flex-end;
+    height: 5vh;
     width: 100%;
     background-color: #81B1B2;
     position: relative;
-    margin-top: 15px;
     bottom: 0;
     left: 0;
+    margin-top: 15px;
     opacity: 0.9;
     box-shadow: rgba(0, 0, 0, 0.2) 5px 3px 5px 5px; }
     @media only screen and (max-width: 1200px) {
@@ -287,6 +312,7 @@ body {
 
 .sideshowcontent img {
   width: 100%;
+  height: 10vh;
   display: inline-block; }
 
 .editform {

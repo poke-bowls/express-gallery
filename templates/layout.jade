@@ -9,10 +9,10 @@ html(lang="en")
     div#navbar
       if currentUser
         div#logout.user
-          span #{currentUser}
-        div#logout.user
           a(href="/gallery/logout")
             span logout
+        div#logout.cuser
+          span #{currentUser}
       else
         div#register.user
           a(href="/gallery/user/new")
@@ -29,7 +29,7 @@ html(lang="en")
       div#navlogo Og
     div#main
       block content
-    div#footer
+    footer#footer
       div#social
       div#about.info
       div#contacts.info

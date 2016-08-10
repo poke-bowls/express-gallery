@@ -33,7 +33,7 @@ app.get('/', function (req, res) {
   res.redirect('/gallery');
 });
 
-app.listen(3000, function() {
+app.listen(8000, function() {
   console.log('Connected');
   db.sequelize.sync();
 });

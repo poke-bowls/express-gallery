@@ -1,0 +1,196 @@
+Query/Find Documents
+
+  1. get all documents
+
+  db.movies.find();
+
+    { "_id" : ObjectId("56b409d74bd277d1c657385d"), "title" : "Fight Club", "writer" : "Chuck Palahniuk", "year" : 1999, "actors" : [ "Brad Pitt", "Edward Norton" ] }
+    { "_id" : ObjectId("56b40a774bd277d1c657385e"), "title" : "Pulp Fiction", "writer" : "Quentin Tarantino", "year" : 1994, "actors" : [ "John Travolta", "Uma Thurman" ] }
+    { "_id" : ObjectId("56b40abb4bd277d1c657385f"), "title" : "Inglorious Basterds", "writer" : "Quentin Tarantino", "year" : 2009, "actors" : [ "Brad Pitt", "Diane Kruger", "Eli Roth" ] }
+    { "_id" : ObjectId("56b40b414bd277d1c6573860"), "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit" }
+    { "_id" : ObjectId("56b40b7e4bd277d1c6573861"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R. Tolkien", "year" : 2013, "franchise" : "The Hobbit" }
+    { "_id" : ObjectId("56b40c2c4bd277d1c6573862"), "title" : "The Hobbit: The Battle of the Five Armies", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit", "synopsis" : "Bilbo and Company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness." }
+    { "_id" : ObjectId("56b40c444bd277d1c6573863"), "title" : "Pee Wee Herman's Big Adventure" }
+    { "_id" : ObjectId("56b40c6b4bd277d1c6573864"), "title" : "Avatar" }
+
+  2. get all documents with writer set to "Quentin Tarantino"
+
+  db.movies.find({ writer : "Quentin Tarantino" });
+
+    { "_id" : ObjectId("56b40a774bd277d1c657385e"), "title" : "Pulp Fiction", "writer" : "Quentin Tarantino", "year" : 1994, "actors" : [ "John Travolta", "Uma Thurman" ] }
+    { "_id" : ObjectId("56b40abb4bd277d1c657385f"), "title" : "Inglorious Basterds", "writer" : "Quentin Tarantino", "year" : 2009, "actors" : [ "Brad Pitt", "Diane Kruger", "Eli Roth" ] }
+
+  3. get all documents where actors include "Brad Pitt"
+
+  db.movies.find({ actors : "Brad Pitt"});
+
+    { "_id" : ObjectId("56b409d74bd277d1c657385d"), "title" : "Fight Club", "writer" : "Chuck Palahniuk", "year" : 1999, "actors" : [ "Brad Pitt", "Edward Norton" ] }
+    { "_id" : ObjectId("56b40abb4bd277d1c657385f"), "title" : "Inglorious Basterds", "writer" : "Quentin Tarantino", "year" : 2009, "actors" : [ "Brad Pitt", "Diane Kruger", "Eli Roth" ] }
+
+  4. get all documents with franchise set to "The Hobbit"
+
+  db.movies.find({ franchise : "The Hobbit" });
+
+    { "_id" : ObjectId("56b40b414bd277d1c6573860"), "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit" }
+    { "_id" : ObjectId("56b40b7e4bd277d1c6573861"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R. Tolkien", "year" : 2013, "franchise" : "The Hobbit" }
+    { "_id" : ObjectId("56b40c2c4bd277d1c6573862"), "title" : "The Hobbit: The Battle of the Five Armies", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit", "synopsis" : "Bilbo and Company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness." }
+
+  5. get all movies released in the 90s
+
+  db.movies.find({ year : { $gt: 1990 $lt: 2000} });
+
+    { "_id" : ObjectId("56b409d74bd277d1c657385d"), "title" : "Fight Club", "writer" : "Chuck Palahniuk", "year" : 1999, "actors" : [ "Brad Pitt", "Edward Norton" ] }
+    { "_id" : ObjectId("56b40a774bd277d1c657385e"), "title" : "Pulp Fiction", "writer" : "Quentin Tarantino", "year" : 1994, "actors" : [ "John Travolta", "Uma Thurman" ] }
+
+  6. get all movies released before the year 2000 or after 2010
+
+  db.movies.find({ year : { $lt: 2000} && {$gt: 2010 } });
+
+    { "_id" : ObjectId("56b40b414bd277d1c6573860"), "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit" }
+    { "_id" : ObjectId("56b40b7e4bd277d1c6573861"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R. Tolkien", "year" : 2013, "franchise" : "The Hobbit" }
+    { "_id" : ObjectId("56b40c2c4bd277d1c6573862"), "title" : "The Hobbit: The Battle of the Five Armies", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit", "synopsis" : "Bilbo and Company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness." }
+
+Update Documents
+
+  1. add a synopsis to "The Hobbit: An Unexpected Journey"
+
+  db.movies.update({ "_id" : ObjectId("56b40b414bd277d1c6573860") }, { $set : { synopsis : "The Hobbit: An Unexpected Journey" }});
+
+    { "_id" : ObjectId("56b40b414bd277d1c6573860"), "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug.", "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit" }
+
+  2. add a synopsis to "The Hobbit: The Desolation of Smaug"
+
+  db.movies.update({ "_id" : ObjectId("56b40b7e4bd277d1c6573861") }, {$set : { synopsis : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring." }});
+
+    { "_id" : ObjectId("56b40b7e4bd277d1c6573861"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R. Tolkien", "year" : 2013, "franchise" : "The Hobbit", "synopsis" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring." }
+
+  3. add an actor named "Samuel L. Jackson" to the movie "Pulp Fiction"
+
+  db.movies.update({ title : "Pulp Fiction"}, { $addToSet : { actors : "Samuel L. Jackson" } });
+
+    { "_id" : ObjectId("56b40a774bd277d1c657385e"), "title" : "Pulp Fiction", "writer" : "Quentin Tarantino", "year" : 1994, "actors" : [ "John Travolta", "Uma Thurman", "Samuel L. Jackson" ] }
+
+Text Search
+
+  1. find all movies that have a synopsis that contains the word "Bilbo"
+
+  db.movies.find({ synopsis : /Bilbo/ });
+
+    { "_id" : ObjectId("56b40b414bd277d1c6573860"), "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug.", "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit" }
+    { "_id" : ObjectId("56b40b7e4bd277d1c6573861"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R. Tolkien", "year" : 2013, "franchise" : "The Hobbit", "synopsis" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring." }
+    { "_id" : ObjectId("56b40c2c4bd277d1c6573862"), "title" : "The Hobbit: The Battle of the Five Armies", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit", "synopsis" : "Bilbo and Company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness." }
+
+  2. find all movies that have a synopsis that contains the word "Gandalf"
+
+  db.movies.find({ synopsis : /.*Gandalf*./ });
+
+    { "_id" : ObjectId("56b40b7e4bd277d1c6573861"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R. Tolkien", "year" : 2013, "franchise" : "The Hobbit", "synopsis" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring." }
+
+  3. find all movies that have a synopsis that contains the word "Bilbo" and not the word "Gandalf"
+
+  db.movies.find({
+    $and : [
+    { synopsis : {$not : /Gandalf/} },
+    { synopsis : /Bilbo/ }
+    ]);
+
+    { "_id" : ObjectId("56b40b414bd277d1c6573860"), "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug.", "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit" }
+    { "_id" : ObjectId("56b40c2c4bd277d1c6573862"), "title" : "The Hobbit: The Battle of the Five Armies", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit", "synopsis" : "Bilbo and Company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness." }
+
+  4. find all movies that have a synopsis that contains the word "dwarves" or "hobbit"
+
+  db.movies.find({
+    $or : [
+    { synopsis : /dwarves/ },
+    { synopsis : /hobbit/ }
+    ]});
+
+    { "_id" : ObjectId("56b40b414bd277d1c6573860"), "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug.", "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit" }
+    { "_id" : ObjectId("56b40b7e4bd277d1c6573861"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R. Tolkien", "year" : 2013, "franchise" : "The Hobbit", "synopsis" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring." }
+
+  5. find all movies that have a synopsis that contains the word "gold" and "dragon"
+
+  db.movies.find({
+    $and : [
+    { synopsis : /gold/ },
+    { synopsis : /dragon/ }
+  ]});
+
+    { "_id" : ObjectId("56b40b414bd277d1c6573860"), "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug.", "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R. Tolkien", "year" : 2012, "franchise" : "The Hobbit" }
+
+Delete Documents
+
+  1. delete the movie "Pee Wee Herman's Big Adventure"
+
+  db.movies.remove({ title : "Pee Wee Herman's Big Adventure" });
+
+  2. delete the movie "Avatar"
+
+  db.movies.remove({ title : "Avatar" });
+
+Querying related collections
+
+  1. find all users
+
+  db.users.find();
+
+    { "_id" : ObjectId("56b50410ae40587633170c60"), "username" : "GoodGuyGreg", "first_name" : "Good Guy", "last_name" : "Greg" }
+    { "_id" : ObjectId("56b504c9ae40587633170c61"), "username" : "ScumbagSteve", "full_name" : { "first" : "Scumbag", "last" : "Steve" } }
+
+  2. find all posts
+
+  db.posts.find();
+
+    { "_id" : ObjectId("56b5058cae40587633170c62"), "username" : "GoodGuyGreg", "title" : "Passes out at party", "body" : "Wakes up early and cleans house" }
+    { "_id" : ObjectId("56b505ceae40587633170c63"), "username" : "GoodGuyGreg", "title" : "Steals your identity", "body" : "Raises your credit score" }
+    { "_id" : ObjectId("56b50613ae40587633170c64"), "username" : "GoodGuyGreg", "title" : "Reports a bug in your code", "body" : "Sends you a Pull Request" }
+    { "_id" : ObjectId("56b50661ae40587633170c65"), "username" : "ScumbagSteve", "title" : "Borrows something", "body" : "Sells it" }
+    { "_id" : ObjectId("56b5067dae40587633170c66"), "username" : "ScumbagSteve", "title" : "Borrows everything", "body" : "The end" }
+    { "_id" : ObjectId("56b506a6ae40587633170c67"), "username" : "ScumbagSteve", "title" : "Forks your repo on github", "body" : "Sets to private" }
+
+  3. find all posts that was authored by "GoodGuyGreg"
+
+  db.posts.find({ username : "GoodGuyGreg" });
+
+    { "_id" : ObjectId("56b5058cae40587633170c62"), "username" : "GoodGuyGreg", "title" : "Passes out at party", "body" : "Wakes up early and cleans house" }
+    { "_id" : ObjectId("56b505ceae40587633170c63"), "username" : "GoodGuyGreg", "title" : "Steals your identity", "body" : "Raises your credit score" }
+    { "_id" : ObjectId("56b50613ae40587633170c64"), "username" : "GoodGuyGreg", "title" : "Reports a bug in your code", "body" : "Sends you a Pull Request" }
+
+  4. find all posts that was authored by "ScumbagSteve"
+
+  db.posts.find({ username : "ScumbagSteve" });
+
+    { "_id" : ObjectId("56b50661ae40587633170c65"), "username" : "ScumbagSteve", "title" : "Borrows something", "body" : "Sells it" }
+    { "_id" : ObjectId("56b5067dae40587633170c66"), "username" : "ScumbagSteve", "title" : "Borrows everything", "body" : "The end" }
+    { "_id" : ObjectId("56b506a6ae40587633170c67"), "username" : "ScumbagSteve", "title" : "Forks your repo on github", "body" : "Sets to private" }
+
+  5. find all comments
+
+  db.comments.find();
+
+    { "_id" : ObjectId("56b51805ae40587633170c68"), "username" : "GoodGuyGreg", "comment" : "Hope you got a good deal", "post" : ObjectId("56b50661ae40587633170c65") }
+    { "_id" : ObjectId("56b51873ae40587633170c69"), "username" : "GoodGuyGreg", "comment" : "What's mine is yours!", "post" : ObjectId("56b5067dae40587633170c66") }
+    { "_id" : ObjectId("56b518bbae40587633170c6a"), "username" : "GoodGuyGreg", "comment" : "Don't violate the licensing agreement!", "post" : ObjectId("56b506a6ae40587633170c67") }
+    { "_id" : ObjectId("56b51971ae40587633170c6b"), "username" : "ScumbagSteve", "comment" : "It still isn't clean", "post" : ObjectId("56b5058cae40587633170c62") }
+    { "_id" : ObjectId("56b51a5dae40587633170c6c"), "username" : "ScumbagSteve", "comment" : "Denied your PR cause I found a hack", "post" : ObjectId("56b50613ae40587633170c64") }
+
+  6. find all comments that were authored by "GoodGuyGreg"
+
+  db.comments.find({ username : "GoodGuyGreg" });
+
+    { "_id" : ObjectId("56b51805ae40587633170c68"), "username" : "GoodGuyGreg", "comment" : "Hope you got a good deal", "post" : ObjectId("56b50661ae40587633170c65") }
+    { "_id" : ObjectId("56b51873ae40587633170c69"), "username" : "GoodGuyGreg", "comment" : "What's mine is yours!", "post" : ObjectId("56b5067dae40587633170c66") }
+    { "_id" : ObjectId("56b518bbae40587633170c6a"), "username" : "GoodGuyGreg", "comment" : "Don't violate the licensing agreement!", "post" : ObjectId("56b506a6ae40587633170c67") }
+
+  7. find all comments that were authored by "ScumbagSteve"
+
+  db.comments.find({ username : "ScumbagSteve" });
+
+    { "_id" : ObjectId("56b51971ae40587633170c6b"), "username" : "ScumbagSteve", "comment" : "It still isn't clean", "post" : ObjectId("56b5058cae40587633170c62") }
+    { "_id" : ObjectId("56b51a5dae40587633170c6c"), "username" : "ScumbagSteve", "comment" : "Denied your PR cause I found a hack", "post" : ObjectId("56b50613ae40587633170c64") }
+
+  8. find all comments belonging to the post "Reports a bug in your code"
+
+  db.comments.find({ post : ObjectId("56b50613ae40587633170c64") });
+
+    { "_id" : ObjectId("56b51a5dae40587633170c6c"), "username" : "ScumbagSteve", "comment" : "Denied your PR cause I found a hack", "post" : ObjectId("56b50613ae40587633170c64") }

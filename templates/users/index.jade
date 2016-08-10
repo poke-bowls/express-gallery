@@ -1,6 +1,7 @@
 extends ./../layout
 
 block content
-  each user in Users
-    ul
-      li Username : #{user.id} #{user.username}
+  div#user-list
+    each user in Users
+      ul
+        li Username : #{user.id} #{user.username}

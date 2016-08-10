@@ -295,8 +295,6 @@ function isAuthenticated(req, res, next) {
 
 module.exports = router;
 
-
-
 router.put('/:id', isAuthenticated, function(req, res){
   Photo.findById(req.params.id)
     .then(function(data){
